@@ -132,7 +132,7 @@ WARNINGS_COUNT=0
 for FILE in $FILES; do
     echo "Checking $FILE for broken links..."
     # Find all `src` attributes in the file:
-    URLS=$(grep -Po 'src="[^"]*"' $FILE)
+    URLS=$(grep -Po 'src="\K[^"]*(?=")' $FILE)
     echo Number of links in $FILE: `echo $URLS | wc -w`
     # Loop through all URLs...
     for URL in $URLS; do
