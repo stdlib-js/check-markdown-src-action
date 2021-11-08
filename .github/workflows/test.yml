@@ -1,0 +1,33 @@
+# Workflow name:
+name: Test Workflow
+
+# Workflow triggers:
+on:
+  push:
+
+# Workflow jobs:
+jobs:
+  check_markdown_img_src:
+    # Define the type of virtual host machine on which to run the job:
+    runs-on: ubuntu-latest
+
+    # Define the sequence of job steps...
+    steps:
+      # Checkout the current branch:
+      - uses: actions/checkout@v2
+      # Run the command to check Markdown img `src` links:
+      - id: broken-src
+        uses: ./
+        with:
+          directory: fixtures
+          exclude: https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules
+      # Print out the results:
+      - run: |
+          echo "Broken `src` links:"
+          echo $FAILURES
+          echo "Warnings:"
+          echo $WARNINGS
+          echo Status: ${{ steps.broken-img-src.outputs.status }}
+        env:
+          FAILURES: ${{ steps.broken-src.outputs.failures}}
+          WARNINGS: ${{ steps.broken-src.outputs.warnings}}

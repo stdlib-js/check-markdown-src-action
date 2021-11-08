@@ -1,0 +1,46 @@
+name: 'Check HTML `src` Attributes'
+description: 'Check all HTML `src` attributes in the Markdown files of a directory.'
+inputs:
+  directory:
+    description: 'Directory in which to to search for `src` URLs'
+    required: false
+  exclude:
+    description: 'Regular expression pattern for `src` URLs that should be skipped'
+    required: false
+    default: 'none'
+  successCodes: 
+    description: 'Comma-separated list of HTTP response codes that should be considered a success'
+    required: false
+    default: '200, 201, 202, 203, 204, 205, 206, 207, 208, 226'
+  warningCodes:
+    description: 'Comma-separated list of HTTP response codes that should be considered a warning'
+    required: false
+    default: '300, 301, 302, 303, 304, 305, 306, 307, 308'
+outputs:
+  failures:
+    description: "New-line separated list of failing `src` URLs indicating broken links"
+    value: ${{ steps.check-links.outputs.failures }}
+  warnings:
+    description: "New-line separated list of warnings"
+    value: ${{ steps.check-links.outputs.warnings }}
+  status:
+    description: "Status of the completed action (either `success` or `failure`)"
+    value: ${{ steps.action-status.outputs.status }}
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        echo "Starting to check links in Markdown files..."
+      shell: bash
+    - id: check-links
+      run: ${{ github.action_path }}/check_links.sh "${{ inputs.successCodes }}" "${{ inputs.warningCodes }}" "${{ inputs.exclude }}" ${{ inputs.directory }}
+      shell: bash
+    - id: action-status
+      run: |
+        if [ ${{ steps.check-links.outputs.failures }} == '[ ]' ]
+        then
+            echo "::set-output name=status::success"
+        else
+            echo "::set-output name=status::failure"
+        fi
+      shell: bash

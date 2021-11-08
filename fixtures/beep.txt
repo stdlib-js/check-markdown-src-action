@@ -1,0 +1,9 @@
+
+<!-- <equation class="equation" label="eq:binets_formula" align="center" raw="F_n = \frac{\varphi^n - \psi^n}{\sqrt{5}}" alt="Binet's formula"> -->
+
+<div class="equation" align="center" data-raw-text="F_n = \frac{\varphi^n - \psi^n}{\sqrt{5}}" data-equation="eq:binets_formula">
+    <img src="https://cdn.jsdelivr.net/gh/stdlib-js/stdlib/ignored-because-we-only-check-markdown-files.svg" alt="Binet's formula">
+    <br>
+</div>
+
+<!-- </equation> -->
