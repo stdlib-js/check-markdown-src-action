@@ -99,7 +99,6 @@ Copyright &copy; 2021. The Stdlib [Authors][stdlib-authors].
 [stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/check-markdown-src-action/main/LICENSE
-https://github.com/stdlib-js/check-markdown-src-action/blob/main/LICENSE
 
 </section>
 
