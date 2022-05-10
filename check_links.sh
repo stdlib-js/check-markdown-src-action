@@ -192,6 +192,14 @@ echo "# Summary" >> $GITHUB_STEP_SUMMARY
 echo "Total number of broken links: $FAILURES_COUNT" >> $GITHUB_STEP_SUMMARY
 echo "Total number of warnings: $WARNINGS_COUNT" >> $GITHUB_STEP_SUMMARY
 
+echo "## Failures" >> $GITHUB_STEP_SUMMARY
+
+echo $FAILURES | md-table -c >> $GITHUB_STEP_SUMMARY
+
+echo "## Warnings" >> $GITHUB_STEP_SUMMARY
+
+echo $WARNINGS | md-table -c >> $GITHUB_STEP_SUMMARY
+
 # Assign the list indicating broken links to the `failures` output variable:
 echo "::set-output name=failures::'$(echo $FAILURES)'" 
 
