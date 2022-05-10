@@ -32,6 +32,8 @@ runs:
     - run: |
         echo "Starting to check links in Markdown files..."
       shell: bash
+    - run: |
+        npm install -g markdown-table-cli
     - id: check-links
       run: ${{ github.action_path }}/check_links.sh "${{ inputs.successCodes }}" "${{ inputs.warningCodes }}" "${{ inputs.exclude }}" ${{ inputs.directory }}
       shell: bash
