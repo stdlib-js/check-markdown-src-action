@@ -32,12 +32,16 @@ runs:
     - run: |
         echo "Starting to check links in Markdown files..."
       shell: bash
-    - run: |
+    - name: Install package to format JSON as Markdown
+      run: |
         npm install -g markdown-table-cli
-    - id: check-links
+      shell: bash
+    - name: Check links
+      id: check-links
       run: ${{ github.action_path }}/check_links.sh "${{ inputs.successCodes }}" "${{ inputs.warningCodes }}" "${{ inputs.exclude }}" ${{ inputs.directory }}
       shell: bash
-    - id: action-status
+    - name: Set status output variable
+      id: action-status
       run: |
         if [ ${{ steps.check-links.outputs.failures }} == '[ ]' ]
         then
