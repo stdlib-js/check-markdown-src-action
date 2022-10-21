@@ -45,8 +45,8 @@ runs:
       run: |
         if [ ${{ steps.check-links.outputs.failures }} == '[ ]' ]
         then
-            echo "::set-output name=status::success"
+            echo "status=success" >> $GITHUB_OUTPUT
         else
-            echo "::set-output name=status::failure"
+            echo "status=failure" >> $GITHUB_OUTPUT
         fi
       shell: bash

@@ -44,7 +44,7 @@ jobs:
       - uses: actions/checkout@v2
       # Run the command to check Markdown links:
       - id: check-links
-        uses: stdlib-js/check-markdown-src-action@v1.0
+        uses: stdlib-js/check-markdown-src-action@v2
         with:
           directory: fixtures
       # Print out the results:
@@ -88,7 +88,7 @@ See [LICENSE][stdlib-license].
 
 ## Copyright
 
-Copyright &copy; 2021. The Stdlib [Authors][stdlib-authors].
+Copyright &copy; 2021-2022. The Stdlib [Authors][stdlib-authors].
 
 <!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
 
