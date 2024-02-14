@@ -14,7 +14,7 @@ jobs:
     # Define the sequence of job steps...
     steps:
       # Checkout the current branch:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       # Run the command to check Markdown img `src` links:
       - id: broken-src
         uses: ./
